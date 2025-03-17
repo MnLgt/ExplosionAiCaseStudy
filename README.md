@@ -2,7 +2,7 @@ Love Without Sound designs AI systems and custom architecture for the music indu
 
 1. ## Building a parser to extract song title, artist, featured artist and modifiers 
 
-In the music industry, we're dealing with a massive influx of new songs every day, and the formatting of metadata can be all over the place. We've built a Spacy pipeline that standardizes this data, extracting key components like song titles, artists, and versions. This means no matter where the data comes from, we can quickly organize it and give each component a unique identifier. This streamlined approach is a game-changer for our clients, boosting efficiency by about 50% and ensuring accurate, consistent handling of music rights.
+In the music industry, we're dealing with a massive influx of new songs every day, and the formatting of metadata can be all over the place. We’ve built a Spacy pipeline that standardizes this data, extracting key components like song titles, artists, and versions. This means no matter where the data comes from, we can quickly organize it and give each component a unique identifier. This streamlined approach is a game-changer for our clients, boosting efficiency by about 50% and ensuring accurate, consistent handling of music rights.
 
 ![Title Variations GIF](lws/assets/title_variations.gif)
 
@@ -19,8 +19,9 @@ Meta Files:
 
 
 2. ## Email Body extraction tool
-```
-In legal negotiations, having a clear picture of the dialogue is crucial. We've built an NER pipeline for the first and last tokens of the message body. This removes all of the noise in the email conversation and extracts just the text. From there we then pull out entities from emails and also call notes, like settlement offers and song mentions. This way, clients can track how offers have evolved over time, seeing the rate at which both sides are adjusting their positions. If opposing counsel has only increased their offer by a certain percentage, while our client has made larger concessions, this data can inform their next move.  
+```text
+In legal negotiations, having a clear picture of the dialogue is crucial. We've built an NER pipeline for the first and last tokens of the message body.  This removes all of the noise in the email conversation and extracts just the text.  From there we then pull out entities from emails and also call notes, like settlement offers and song mentions. This way, clients can track how offers have evolved over time, seeing the rate at which both sides are adjusting their positions. If opposing counsel has only increased their offer by a certain percentage, while our client has made larger concessions, this data can inform their next move.  
+
 Additionally, when specific songs are mentioned, our system links these mentions to the unique song identifiers in our music metadata database. This allows clients to quickly verify licensing claims and understand the context of each song within a case. By connecting these dots, we provide a comprehensive view that guides our clients and law firms in their decision-making, enhancing both efficiency and strategy.
 ```
 
@@ -29,7 +30,7 @@ Additionally, when specific songs are mentioned, our system links these mentions
 ## I built a pipeline that automatically classifies incoming documents—whether they're tolling agreements, settlement proposals, or licensing contracts—and extracts the most valuable data points.
 
 When a settlement agreement arrives, our system immediately identifies key terms like payment deadlines, dollar amounts, and rights granted. For tolling agreements, it flags critical dates and extension provisions. This automation eliminates hours of manual review and structures various things like payment deadline or agreement expiration dates.  
-By connecting this attachment data with our broader email analysis system, we create a comprehensive view of case documentation that transforms how clients manage their negotiations. Legal teams can instantly access a timeline of all document exchanges, complete with extracted terms and conditions. This system has totally transformed what the client's team spends their time doing and saves them from hours of manual sifting through documents and instead have a broad picture of everything going on.
+By connecting this attachment data with our broader email analysis system, we create a comprehensive view of case documentation that transforms how clients manage their negotiations. Legal teams can instantly access a timeline of all document exchanges, complete with extracted terms and conditions. This system has totally transformed what the client’s team spends their time doing and saves them from hours of manual sifting through documents and instead have a broad picture of everything going on.
 
 4. ## Extracting legal citations 
 
@@ -40,7 +41,7 @@ It's one of those tools that just gets better with use—every new case and ever
 
 5. ## Extracting requests from emails 
 
-We've also built a request tracking system that's been a real lifesaver for our teams. It automatically scans through all incoming emails and pinpoints specific requests or action items, whether they're explicit or sometimes just implied in the text.  
+We’ve also built a request tracking system that's been a real lifesaver for our teams. It automatically scans through all incoming emails and pinpoints specific requests or action items, whether they're explicit or sometimes just implied in the text.  
 What's really valuable is how it prioritizes these requests based on urgency indicators in the language and the sender's authority level. So instead of our attorneys spending hours sifting through their inboxes, they get this dynamic dashboard of pending requests that updates in real-time.  
 The system has this clever way of connecting related requests across multiple email threads too. If someone's asking about the same issue in different conversations, it consolidates those touchpoints so those can be addressed all at once instead of one by one. Their response times have improved dramatically, and their clients are noticing the difference in how quickly things are addressed.  
 It's become this essential workflow tool that's freed up their legal teams to focus on substantive work rather than email management. 
