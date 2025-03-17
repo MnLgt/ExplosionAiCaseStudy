@@ -19,11 +19,10 @@ Meta Files:
 
 
 2. ## Email Body extraction tool
-```text
 In legal negotiations, having a clear picture of the dialogue is crucial. We've built an NER pipeline for the first and last tokens of the message body.  This removes all of the noise in the email conversation and extracts just the text.  From there we then pull out entities from emails and also call notes, like settlement offers and song mentions. This way, clients can track how offers have evolved over time, seeing the rate at which both sides are adjusting their positions. If opposing counsel has only increased their offer by a certain percentage, while our client has made larger concessions, this data can inform their next move.  
 
 Additionally, when specific songs are mentioned, our system links these mentions to the unique song identifiers in our music metadata database. This allows clients to quickly verify licensing claims and understand the context of each song within a case. By connecting these dots, we provide a comprehensive view that guides our clients and law firms in their decision-making, enhancing both efficiency and strategy.
-```
+
 
 3. ## Extracting email attachments
 
