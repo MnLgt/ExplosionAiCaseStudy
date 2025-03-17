@@ -4,7 +4,17 @@ Love Without Sound designs AI systems and custom architecture for the music indu
 
 In the music industry, we're dealing with a massive influx of new songs every day, and the formatting of metadata can be all over the place. We’ve built a Spacy pipeline that standardizes this data, extracting key components like song titles, artists, and versions. This means no matter where the data comes from, we can quickly organize it and give each component a unique identifier. This streamlined approach is a game-changer for our clients, boosting efficiency by about 50% and ensuring accurate, consistent handling of music rights.
 
-<iframe src="lws/assets/title_variations.html" width="600" height="400"></iframe>
+[Title Variations HTML File](lws/assets/title_variations.html)
+![Title Variations GIF](lws/assets/title_variations.gif)
+
+[Title Variations NER HTML File](lws/assets/title_variations_ner.html)
+![Title Variations NER GIF](lws/assets/title_variations_ner.gif)
+
+Meta Files:
+- [Song Model meta.json](lws/assets/meta_music_md_song_model.json)
+- [Artist Model meta.json](lws/assets/meta_music_md_artist_model.json)
+- [Modifier Model meta.json](lws/assets/meta_music_md_modifiers_model.json)
+
 
 2. ## Email Body extraction tool
 
