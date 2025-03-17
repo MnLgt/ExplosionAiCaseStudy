@@ -1,8 +1,8 @@
 <header class="hero">
   <div class="container">
     <h1><a href="http://www.lovewithoutsound.com">Love Without Sound</a></h1>
-    <p class="lead">Love Without Sound crafts sophisticated AI systems and custom architecture for the music industry. We specialize in natural language processing solutions for music metadata, revolutionizing rights management and monetization.
-Our expertise transforms unstructured data into valuable, structured assets—delivering actionable insights while creating seamless data exchange frameworks between industry stakeholders. We serve a diverse clientele including intellectual property law firms and innovative music startups.</p>
+    <p class="lead">Love Without Sound crafts sophisticated AI systems and custom architecture for the music and legal industries. We specialize in natural language processing solutions for music metadata and legal document analysis, revolutionizing rights management, contract interpretation, and monetization across domains.
+Our expertise transforms unstructured data into valuable, structured assets—delivering actionable insights while creating seamless data exchange frameworks between industry stakeholders. We serve a diverse clientele including intellectual property law firms, entertainment attorneys, legal departments, and innovative music startups, bridging the gap between creative rights and legal protection.</p>
   
   </div>
 </header>
@@ -23,12 +23,17 @@ This standardization process assigns unique identifiers to each metadata compone
 
 
 ![Title Variations GIF](lws/assets/title_variations.gif)
+
 *This animation demonstrates various metadata variations for the song "All The Way Up" by Fat Joe, showing how the same song can appear with different title and artist formatting across music platforms and databases.*
 
+<br>
+<br>
+
 ![Title Variations NER GIF](lws/assets/title_variations_ner.gif)
+
 *The same metadata variations with color-coded entity recognition, highlighting how our trained spaCy models identify and classify different components of song metadata. Colored boxes indicate the entities detected by our natural language processing models, showcasing the system's ability to normalize music metadata despite inconsistent formatting.*
 
-Html Files: 
+HTML Files: 
 - [Title Variations HTML File](lws/assets/title_variations.html)
 - [Title Variations NER HTML File](lws/assets/title_variations_ner.html)
 
@@ -71,7 +76,7 @@ Meta Files:
    The historical tracking capability maintains connections through corporate rebranding and acquisitions, ensuring rights clarity over time by tracing the lineage of particular rights through corporate changes.
 
 7. ### Copyright Registration Entity Extraction
-   Our spaCy system has revolutionized copyright registration analysis by automatically extracting and categorizing critical entities from registration documents—creators, claimants, prior registration references, and more. When connected to our rights management database, the system instantly identifies discrepancies between license agreements and official registrations.
+   Our spaCy system has significantly improved copyright registration analysis by automatically extracting and categorizing critical entities from registration documents—creators, claimants, prior registration references, and more. When connected to our rights management database, the system instantly identifies discrepancies between license agreements and official registrations.
    
    The historical analysis component traces works through multiple registrations and identifies potential chain-of-title gaps, providing crucial verification during acquisitions. This approach has dramatically reduced review time from days to minutes while significantly decreasing rights ownership risks by enabling proactive resolution before disputes arise.
 
