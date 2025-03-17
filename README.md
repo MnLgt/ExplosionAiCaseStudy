@@ -28,11 +28,21 @@ Meta Files:
 - [Modifier Model meta.json](lws/assets/meta_music_md_modifiers_model.json)
 
 
+## Documents Pipeline
+
+1. ## Email Correspondence Classifier
+
+The first part of our document pipeline starts with the incoming and outgoing emails.  We start with a simple classifier that classifies whether the email is correspondence or not.  This separates various emails like newsletters, zoom invites, or any other type of non-substantive email from the correspondence we want to focus on.
+
+[Correspondence Classifier meta.json](lws/assets/meta_email_corr_cat.json)
+
+
 2. ## Email Body extraction tool
 In legal negotiations, having a clear picture of the dialogue is crucial. We've built an NER pipeline for the first and last tokens of the message body.  This removes all of the noise in the email conversation and extracts just the text.  From there we then pull out entities from emails and also call notes, like settlement offers and song mentions. This way, clients can track how offers have evolved over time, seeing the rate at which both sides are adjusting their positions.  
 
 Additionally, when specific songs are mentioned, our system links these mentions to the unique song identifiers in our music metadata database. This allows clients to quickly verify licensing claims and understand the context of each song within a case. By connecting these dots, we provide a comprehensive view that guides our clients and law firms in their decision-making, enhancing both efficiency and strategy.
 
+[Body Extractor meta.json](lws/assets/meta_email_bom_eom.json)
 
 3. ## Extracting email attachments
 
@@ -41,12 +51,20 @@ Additionally, when specific songs are mentioned, our system links these mentions
 When a settlement agreement arrives, our system immediately identifies key terms like payment deadlines, dollar amounts, and rights granted. For tolling agreements, it flags critical dates and extension provisions. This automation eliminates hours of manual review and structures various things like payment deadline or agreement expiration dates.  
 By connecting this attachment data with our broader email analysis system, we create a comprehensive view of case documentation that transforms how clients manage their negotiations. Legal teams can instantly access a timeline of all document exchanges, complete with extracted terms and conditions. This system has totally transformed what the client's team spends their time doing and saves them from hours of manual sifting through documents and instead have a broad picture of everything going on.
 
+- [Attachment Classifier meta.json](lws/assets/meta_attachment_classifier.json)
+- [Agreement Sections Classifier meta.json](lws/assets/meta_agreement_sections.json)
+- [Agreement Spans meta.json](lsw/assets/meta_agreement_spans.json)
+- [Agreement NER meta.json](lsw/assets/meta_agreement_ner.json)
+
 4. ## Extracting legal citations 
 
 When it comes to legal citations, the system automatically pulls citations from all those emails flowing through negotiations, but it doesn't just collect them—it connects each citation to the specific arguments being made.  
 What's fascinating is how this builds over time. We're essentially creating this living map of how different precedents are typically used in various argument contexts. So when the attorneys need to respond to something, they don't have to start from scratch with research—they can immediately see which cases have worked well for similar positions in past negotiations.  
 The real game-changer is having this intelligence embedded right in the workflow. When a citation comes in from opposing counsel, our team instantly knows its history, how it's been countered before, and whether it's typically effective. We've seen legal teams cut their research time almost in half, and they're walking into negotiations with a much stronger understanding of the precedent landscape.  
 It's one of those tools that just gets better with use—every new case and every new citation makes the system smarter, and that's creating this compounding advantage for our clients over time.
+
+- [Legal Citations NER meta.json](lsw/assets/legal_citation.json)
+
 
 5. ## Extracting requests from emails 
 
