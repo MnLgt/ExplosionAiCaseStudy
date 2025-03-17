@@ -10,14 +10,16 @@ Our expertise transforms unstructured data into valuable, structured assets—de
 ## Music Metadata
 
 ### The Industry Challenge
-
+* **[Volume of Daily Music](lws/Music%20Metadata%20Problem%20-%20Facts%20%26%20Figures.md#volume-of-music-uploaded-daily):** Spotify receives approximately 40,000 new tracks daily.
 * **[Misattributed Ownership Rights](lws/Music%20Metadata%20Problem%20-%20Facts%20%26%20Figures.md#metadata-incompleteness):** Approximately 15% of tracks have incomplete metadata, compounded by lack of standardization. This leads to ownership disputes affecting $1.5 billion in royalties annually.
 * **[Unallocated Royalties](lws/Music%20Metadata%20Problem%20-%20Facts%20%26%20Figures.md#financial-impact):** An estimated $2.5 billion in "black box money" remains unallocated due to metadata issues, preventing proper compensation to rightful creators.
 * **[Compensation Gaps](lws/Music%20Metadata%20Problem%20-%20Facts%20%26%20Figures.md#financial-impact):** Roughly 25% of songwriting revenue is lost due to metadata errors, with independent artists disproportionately affected by these systemic failures.
 
 ### Building a parser to extract song title, artist, featured artist and modifiers 
 
-In the music industry, we're dealing with a massive influx of new songs every day, and the formatting of metadata can be all over the place. We've built a Spacy pipeline that standardizes this data, extracting key components like song titles, artists, and versions. This means no matter where the data comes from, we can quickly organize it and give each component a unique identifier. This streamlined approach is a game-changer for our clients, boosting efficiency by about 50% and ensuring accurate, consistent handling of music rights.
+Our music metadata parser addresses the challenge of inconsistent formatting across the industry's massive daily influx of new content. We've developed a specialized spaCy pipeline that standardizes this unstructured data by extracting and categorizing key components including song titles, artists, featured performers, and version modifiers. 
+
+This standardization process assigns unique identifiers to each metadata component, creating a consistent framework regardless of the source format. The system transforms chaotic, heterogeneous metadata into structured, reliable information that can be seamlessly integrated across platforms and databases. For our clients, this has translated to approximately 50% improvement in processing efficiency while ensuring accurate, consistent management of music rights and royalty attributions.
 
 
 ![Title Variations GIF](lws/assets/title_variations.gif)

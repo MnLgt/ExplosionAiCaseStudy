@@ -36,9 +36,3 @@
 9. **Independent Artists Affected:**  
    * **Fact:** Independent artists, who make up roughly 40% of the global music market, are disproportionately impacted by metadata issues due to limited access to resources ([Kluwer Copyright Blog, 2025](https://copyrightblog.kluweriplaw.com/2025/03/13/copyrights-critical-mess-music-metadata/)).  
    * **Significance:** These creators face larger compensation gaps, as they often can’t afford the tools or expertise needed to ensure accurate metadata, deepening inequities in the industry.
-
-
-Music Metadata Mixups: 
-
-* Beyonce’s 7/11 can be interpreted as a date type and get written to a spreadsheet as 45849  
-* Jay Z’s 4:44 can get written as a decimal like 0.1972222222
