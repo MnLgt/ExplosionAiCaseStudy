@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>NER Animation</title>
+    <style>
+        :root {
+            --color-song-title: #dbeafe;
+            --color-modifier: #f3e8ff;
+            --color-featured: #dcfce7;
+            --color-main-artist: #fef3c7;
+            --label-song-title: #1e40af;
+            --label-modifier: #6b21a8;
+            --label-featured: #166534;
+            --label-main-artist: #92400e;
+        }
+
+        .ner-container {
+            font-family: system-ui, -apple-system, sans-serif;
+            padding: 2rem;
+        }
+
+        .ner-animation {
+            position: relative;
+            min-height: 10rem;
+            margin-bottom: 4rem;
+            text-align: left;
+        }
+
+        .text-block {
+            font-size: 0.875rem;
+            transition: opacity 0.3s ease-in-out;
+            position: absolute;
+            opacity: 0;
+        }
+
+        .entity {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            margin: 0.25rem 0.25rem;
+        }
+
+        .entity-label {
+            font-size: 0.625rem;
+            font-weight: 500;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            margin-left: 0.5rem;
+            opacity: 0;
+        }
+
+        .legend {
+            margin-top: 2rem;
+            opacity: 0;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.25rem;
+        }
+
+        .legend-color {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 0.25rem;
+        }
+
+        /* Entity types */
+        .song-title {
+            --highlight-color: var(--color-song-title);
+        }
+
+        .modifier {
+            --highlight-color: var(--color-modifier);
+        }
+
+        .featured-artist {
+            --highlight-color: var(--color-featured);
+        }
+
+        .main-artist {
+            --highlight-color: var(--color-main-artist);
+        }
+
+        /* Animations */
+        @keyframes highlightText {
+            to {
+                background-color: var(--highlight-color);
+            }
+        }
+
+        @keyframes showLabel {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .show-styled .entity {
+            animation: highlightText 0.5s ease-out forwards;
+        }
+
+        .show-styled .entity-label {
+            animation: showLabel 0.5s ease-out 0.3s forwards;
+        }
+
+        .show-legend .legend {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ner-container">
+        <div class="ner-animation" id="song-title">
+            <div class="text-block raw-text">
+                MONEY IN MY POCKET [ORIGINAL VERSION] (Drake)
+            </div>
+            <div class="text-block styled-text">
+                <span class="entity song-title">
+                    MONEY IN MY POCKET
+                    <span class="entity-label" style="color: var(--label-song-title);">SONG_TITLE</span>
+                </span>
+                [<span class="entity modifier">
+                    ORIGINAL VERSION
+                    <span class="entity-label" style="color: var(--label-modifier);">MODIFIER</span>
+                </span>]
+                (<span class="entity featured-artist">
+                    Drake
+                    <span class="entity-label" style="color: var(--label-featured);">FEATURED_ARTIST</span>
+                </span>)
+                <div class="legend"></div>
+            </div>
+        </div>
+
+        <div class="ner-animation" id="artist-collab">
+            <div class="text-block raw-text">
+                The Weeknd & Swedish House Mafia feat. Future
+            </div>
+            <div class="text-block styled-text">
+                <span class="entity main-artist">The Weeknd
+                    <span class="entity-label" style="color: var(--label-main-artist);">ARTIST</span>
+                </span>
+                &amp;
+                <span class="entity featured-artist">Swedish House Mafia
+                    <span class="entity-label" style="color: var(--label-featured);">FEATURED_ARTIST</span>
+                </span>
+                feat.
+                <span class="entity featured-artist">Future
+                    <span class="entity-label" style="color: var(--label-featured);">FEATURED_ARTIST</span>
+                </span>
+                <div class="legend"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class NERAnimation {
+            constructor() {
+                this.containers = document.querySelectorAll('.ner-animation');
+                this.setupLegends();
+                this.startAnimation();
+            }
+
+            setupLegends() {
+                const legendData = {
+                    'song-title': [
+                        { color: 'var(--label-song-title)', label: 'SONG_TITLE' },
+                        { color: 'var(--label-modifier)', label: 'MODIFIER' },
+                        { color: 'var(--label-featured)', label: 'FEATURED_ARTIST' }
+                    ],
+                    'artist-collab': [
+                        { color: 'var(--label-main-artist)', label: 'ARTIST' },
+                        { color: 'var(--label-featured)', label: 'FEATURED_ARTIST' }
+                    ]
+                };
+
+                this.containers.forEach(container => {
+                    const legend = container.querySelector('.legend');
+                    const data = legendData[container.id];
+                    data.forEach(item => {
+                        const div = document.createElement('div');
+                        div.className = 'legend-item';
+                        div.innerHTML = `
+                            <div class="legend-color" style="background-color: ${item.color}"></div>
+                            <span style="font-size: 0.875rem;">${item.label}</span>
+                        `;
+                        legend.appendChild(div);
+                    });
+                });
+            }
+
+            animateContainer(container) {
+                const rawText = container.querySelector('.raw-text');
+                const styledText = container.querySelector('.styled-text');
+
+                rawText.style.opacity = '1';
+                styledText.style.opacity = '0';
+
+                setTimeout(() => {
+                    rawText.style.opacity = '0';
+                    styledText.style.opacity = '1';
+                    styledText.classList.add('show-styled');
+
+                    setTimeout(() => {
+                        styledText.classList.add('show-legend');
+                    }, 1000);
+                }, 1500);
+            }
+
+            resetContainer(container) {
+                const rawText = container.querySelector('.raw-text');
+                const styledText = container.querySelector('.styled-text');
+
+                rawText.style.opacity = '0';
+                styledText.style.opacity = '0';
+                styledText.classList.remove('show-styled', 'show-legend');
+            }
+
+            async runSequence() {
+                const animate = async () => {
+                    this.containers.forEach(this.resetContainer);
+                    await new Promise(resolve => setTimeout(resolve, 100));
+
+                    this.animateContainer(this.containers[0]);
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+
+                    this.animateContainer(this.containers[1]);
+                    await new Promise(resolve => setTimeout(resolve, 3000));
+                };
+
+                while (true) {
+                    await animate();
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+            }
+
+            startAnimation() {
+                this.runSequence();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => new NERAnimation());
+    </script>
+</body>
+
+</html>
