@@ -1,11 +1,19 @@
 <header class="hero">
   <div class="container">
-    <h1><a href="http://www.lovewithoutsound.com">Love Without Sound</a></h1>
-    <p class="lead">Love Without Sound crafts sophisticated AI systems and custom architecture for the music and legal industries. We specialize in natural language processing solutions for music metadata and legal document analysis, revolutionizing rights management, contract interpretation, and monetization across domains.
-Our expertise transforms unstructured data into valuable, structured assets—delivering actionable insights while creating seamless data exchange frameworks between industry stakeholders. We serve a diverse clientele including intellectual property law firms, entertainment attorneys, legal departments, and innovative music startups, bridging the gap between creative rights and legal protection.</p>
-  
+    <h1><a href="http://www.lovewithoutsound.com" style="color: #4381C1;">Love Without Sound</a></h1>  
   </div>
 </header>
+
+<style>
+  h1, h2, h3, h4, h5, h6 {
+    color: #000000;
+  }
+  a {
+    color: #4381C1;
+  }
+  
+
+</style>
 
 ## Music Metadata
 
