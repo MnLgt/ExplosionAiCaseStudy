@@ -4,17 +4,6 @@
   </div>
 </header>
 
-<style>
-  h1, h2, h3, h4, h5, h6 {
-    color: #000000;
-  }
-  a {
-    color: #4381C1;
-  }
-  
-
-</style>
-
 ## Music Metadata
 
 ### The Industry Challenge
@@ -50,6 +39,8 @@ Meta Files:
 - [Artist Model meta.json](lws/assets/meta_music_md_artist_model.json)
 - [Modifier Model meta.json](lws/assets/meta_music_md_modifiers_model.json)
 
+CSV Files: 
+- [Example Output From Pipeline](lws/assets/title_variations_processed.csv)
 
 ## Documents Pipeline
 
@@ -64,9 +55,20 @@ Meta Files:
    
    **Legal Citation Extraction:** Our system automatically identifies legal citations and maps them to the specific arguments they support. Over time, this builds a dynamic reference system showing how different precedents apply to various contexts. When opposing counsel cites a case, our clients instantly understand its historical usage, typical counter-arguments, and overall effectiveness. This intelligence has reduced research time by nearly 50% while providing a stronger understanding of the precedent landscape.
 
+   <img src="lws/assets/legal_citations_ner.png" alt="Legal Citation Ner" width="50%">
+   <br>
+   <br>
+
    **Music Reference Extraction:** When songs are mentioned, our system links these references to unique identifiers in our music metadata database, enabling quick verification of licensing claims and providing essential context. This comprehensive connection helps guide clients in making informed decisions.
    
    **Request Tracking System:** We have also developed a tool to identify action items and requests, whether explicitly stated or implied. The system prioritizes these items based on urgency classification, creating a real-time dashboard of pending requests. By connecting related requests across multiple threads, teams can address similar issues comprehensively rather than piecemeal, significantly improving the workflow in case management.
+
+   <img src="lws/assets/email_entities.png" alt="Legal Citation Ner" width="50%">
+   <br>
+   <br>
+   HTML Files: 
+- [Email Entites HTML File](lws/assets/email_entites.html)
+
 
 4. ### Email Attachment Processing
    The email attachments are classified and the critical data points are extracted. For settlement agreements, the system identifies payment deadlines, amounts, and granted rights. For tolling agreements, it highlights key dates and extension provisions.  Letters, Copyright Registrations, Licenses, and any other common form of documents are also processed and piped to the relevant part of the system.

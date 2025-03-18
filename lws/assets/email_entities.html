@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Analysis Visualization</title>
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --request: #ef4444;
+            --gray: #64748b;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --radius: 8px;
+            --transition: all 0.2s ease;
+            --label-width: 140px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #334155;
+            background-color: #ffffff;
+            padding: 2rem;
+        }
+
+        .app-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .app-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .app-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-description {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        .email-container {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            padding-left: var(--label-width);
+        }
+
+        .email-header {
+            padding: 1.5rem;
+            border-bottom: none;
+            color: var(--gray);
+        }
+
+        .subject {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+
+        .metadata {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0.5rem 1rem;
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+
+        .metadata-label {
+            font-weight: 500;
+        }
+
+        .email-body {
+            padding: 2rem;
+            position: relative;
+        }
+
+        .email-content {
+            width: 100%;
+        }
+
+        .paragraph {
+            margin-bottom: 1.25rem;
+            position: relative;
+            padding: 0.5rem 0 0.5rem 0;
+        }
+
+        /* Label styling */
+        .label-container {
+            position: absolute;
+            left: calc(-1 * var(--label-width));
+            width: var(--label-width);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            top: 0.5rem;
+            padding-left: 1.25rem;
+            padding-right: 0.5rem;
+        }
+
+        .side-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-align: left;
+            width: auto;
+            margin-top: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .highlight {
+            position: relative;
+            border-radius: 4px;
+        }
+
+        .highlight-bom,
+        .highlight-eom {
+            background-color: rgba(100, 116, 139, 0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            color: var(--gray);
+        }
+
+        .highlight-request {
+            background-color: rgba(239, 68, 68, 0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .highlight-musical-work {
+            background-color: rgba(59, 130, 246, 0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .label-bom,
+        .label-eom {
+            color: var(--gray);
+        }
+
+        .label-request {
+            color: var(--request);
+        }
+
+        .label-musical-work {
+            color: var(--primary);
+        }
+
+        .signature {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: none;
+            font-size: 0.875rem;
+            color: #dfe4eb !important;
+            opacity: 0.5 !important;
+        }
+
+        .email-footer {
+            font-size: 0.75rem;
+            color: #dfe4eb !important;
+            opacity: 0.5 !important;
+            padding: 1rem 1.5rem;
+            background-color: transparent;
+            border-top: none;
+        }
+
+        .legend {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            padding: 1rem;
+            background-color: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 1rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+
+        .legend-text {
+            font-weight: 500;
+        }
+
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .email-container {
+                padding-left: 0;
+                padding-top: 60px;
+            }
+
+            .label-container {
+                position: absolute;
+                left: 0;
+                width: 100%;
+                padding-left: 0;
+            }
+
+            .side-label {
+                text-align: left;
+                margin-bottom: 0;
+                display: inline-block;
+            }
+
+            .paragraph {
+                padding-top: 0;
+            }
+
+            .legend {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <div class="email-body">
+            <div class="email-content">
+                <div class="paragraph"
+                    style="color: #64748b !important; opacity: 0.5 !important; font-size: 0.875rem; margin-bottom: 2rem; font-weight: 600;">
+                    FOR SETTLEMENT PURPOSES ONLY – SUBJECT TO FRE 408
+                </div>
+
+                <div class="paragraph">
+                    <div class="label-container">
+                        <div class="side-label label-bom">BOM</div>
+                    </div>
+                    <span class="highlight highlight-bom">Hi Olivia,</span>
+                </div>
+
+                <div class="paragraph">
+                    I hope this email finds you well! I wanted to check in as we haven't heard back in a while on
+                    our
+                    ongoing project. I know everyone's busy, but we're really hoping to make some progress soon.
+                </div>
+
+                <div class="paragraph">
+                    <div class="label-container">
+                        <div class="side-label label-request">REQUEST</div>
+                    </div>
+                    <span class="highlight highlight-request">Could you please send over that updated draft
+                        agreement you mentioned last week?</span><span> We've been waiting
+                        since last August, and we're eager to see it.</span>
+                </div>
+
+                <div class="paragraph">
+                    <div class="label-container">
+                        <div class="side-label label-request">REQUEST</div>
+                        <div class="side-label label-musical-work">MUSICAL_WORK</div>
+                    </div>
+                    Also, <span class="highlight highlight-request">we'd love to get your confirmation about the
+                        licenses for</span>
+                    " <span class="highlight highlight-musical-work">Hold On, We're Going Home</span> " by Drake.
+                    Just want to make sure we're covered on the copyright front - it would be great to avoid
+                    any hiccups down the road!
+                </div>
+
+                <div class="paragraph">
+                    <div class="label-container">
+                        <div class="side-label label-request">REQUEST</div>
+                    </div>
+                    <span class="highlight highlight-request">Is there anything I can do to help move things along?
+                        Maybe we could hop on a quick call if that
+                        would be easier?</span>
+                </div>
+
+                <div class="paragraph">
+                    Looking forward to catching up soon!
+                </div>
+
+                <div class="paragraph">
+                    <div class="label-container">
+                        <div class="side-label label-eom">EOM</div>
+                    </div>
+                    <span class="highlight highlight-eom">Best wishes,</span>
+                </div>
+
+                <div class="signature" style="color: #64748b !important; opacity: 0.5 !important;">
+                    Ethan<br>
+                    Ethan M. Lee (He/Him)<br>
+                    Harrison & Partners<br>
+                    (212) 555-6789
+                </div>
+            </div>
+        </div>
+
+        <div class="email-footer" style="color: #64748b !important; opacity: 0.5 !important;">
+            This email and any files transmitted with it are confidential and intended solely for the use of the
+            individual or entity to whom they are addressed.
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
