@@ -61,6 +61,14 @@ CSV Files:
 
    **Music Reference Extraction:** When songs are mentioned, our system links these references to unique identifiers in our music metadata database, enabling quick verification of licensing claims and providing essential context. This comprehensive connection helps guide clients in making informed decisions.
    
+   ![Music Extraction Pipeline](lws/assets/music_md_pipeline.png)
+   <br>
+   <br>
+   HTML Files: 
+   - [Music Extraction Pipeline](lws/assets/music_md_pipeline.html)
+
+   <br>
+   <br>
    **Request Tracking System:** We have also developed a tool to identify action items and requests, whether explicitly stated or implied. The system prioritizes these items based on urgency classification, creating a real-time dashboard of pending requests. By connecting related requests across multiple threads, teams can address similar issues comprehensively rather than piecemeal, significantly improving the workflow in case management.
 
    <img src="lws/assets/email_entities.png" alt="Legal Citation Ner" width="50%">
@@ -99,3 +107,16 @@ CSV Files:
 - [Agreement NER meta.json](lsw/assets/meta_agreement_ner.json)
 
 - [Legal Citations NER meta.json](lsw/assets/legal_citation.json)
+
+Eval Files:
+- [Music Metadata Songs Eval](lws/assets/eval_song_titles.json)
+- [Music Metadata Artists Eval](lws/assets/eval_artists.json)
+- [Music Metadata Modifiers Eval](lws/assets/eval_modifiers.json)
+- [Correspondence Classifier Eval](lws/assets/eval_email_corr_cat.json)
+- [Email Body NER Eval](lws/assets/eval_email_bom_eom_ner.json)
+
+- [Attachment Classifier Eval](lws/assets/eval_attachment_classifier.json)
+- [Agreement Sections NER Eval](lws/assets/eval_agreement_sections.json)
+- [Agreement Spans NER Eval](lws/assets/eval_agreement_spans.json)
+- [Agreement NER Eval](lws/assets/eval_agreement_ner.json)
+- [Legal Citations NER Eval](lws/assets/eval_legal_citations.json)

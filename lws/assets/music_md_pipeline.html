@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+</head>
+<body>
+  <div class="mermaid">
+    flowchart TD
+    subgraph "Data Ingestion Layer"
+        A[Music Metadata Sources] --> B[Raw Data Intake]
+        C[Email Communications] --> B
+        D[Document Processing] --> B
+    end
+    
+    subgraph "NER Processing Core"
+        B --> E[NER Model Suite]
+        E --> F1[Song Title Extraction]
+        E --> F2[Artist Name Extraction]
+        E --> F3[Modifier Detection\n'Remix', 'Live', 'Edit']
+        E --> F4[Featured Artist Extraction]
+    end
+    
+    subgraph "Classification Engine"
+        F1 --> G[Entity Standardization]
+        F2 --> G
+        F3 --> H[Modifier Classification]
+        F4 --> G
+        H --> I[Category Assignment\n'Remix', 'Live Performance', 'Special Edition']
+    end
+    
+    subgraph "Database Integration"
+        G --> J[Unique Song ID Matching]
+        I --> J
+        J --> K[Master Database]
+    end
+    
+    subgraph "Use Case Applications"
+        K --> L1[Metadata Cleaning & Standardization]
+        K --> L2[Song Mention Recognition in Communications]
+        K --> L3[Licensing Verification Workflow]
+        
+        L2 --> M1[Extract Song References from Emails]
+        M1 --> M2[Match to Song Database]
+        M2 --> M3[Retrieve License History]
+        M3 --> M4[Verify License Claims]
+        M4 --> M5[License Term Validation]
+        M5 --> M6[Automatic Response Generation]
+        
+        L1 --> N1[Deduplicate Song Entries]
+        N1 --> N2[Standardize Metadata Format]
+        N2 --> N3[Reconcile Multi-Source Metadata]
+        
+        L3 --> O1[Identify License Requirements]
+        O1 --> O2[Match to Existing Licenses]
+        O2 --> O3[Flag Gaps or Discrepancies]
+    end
+    
+    style E fill:#f96,stroke:#333,stroke-width:2px
+    style J fill:#6af,stroke:#333,stroke-width:2px
+    style L1 fill:#6f6,stroke:#333,stroke-width:2px
+    style L2 fill:#6f6,stroke:#333,stroke-width:2px
+    style L3 fill:#6f6,stroke:#333,stroke-width:2px
+  </div>
+</body>
+</html>
