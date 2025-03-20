@@ -4,6 +4,8 @@
   </div>
 </header>
 
+Jordan Davis is the founder of Love Without Sound. He's been in the music industry for over 17 years and previously worked at recording studios and mastering studios in London and New York as a sound engineer, producer, and composer. Seeing a gap in the market for specialized structured data products, he taught himself programming and NLP, and founded his company in 2023.
+
 ## Music Metadata
 
 ### The Industry Challenge
